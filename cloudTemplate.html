@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Tag Cloud</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  <script src="./src/wordcloud2.js"></script>
+  <style src="./src/style.css"></style>
+  
+  <script type="text/javascript">
+    var options = {};
+    var list = resultArray;
+
+    function renderCloud(list) {
+      var options = {};
+      var options = {list: list,
+                  fontFamily: 'Arial',
+                  fontWeight: 'bold',
+                  weightFactor: $('#cloud-container').width() / 1280,
+                  gridSize: 10 * $('#cloud-container').width() / 1280,
+                  rotateRatio: 0,
+                  shape: 'circle',
+                  color: '#000',
+                  minSize: 8 * $('#cloud-container').width() / 1280,
+                };
+
+      WordCloud(document.getElementById("cloud-container"), options);
+    }
+
+    $(document).ready( function() {
+      renderCloud(list);  
+    });
+
+    $( window ).resize(function() {
+      renderCloud(list);
+    });
+  </script>
+
+</head>
+<body>
+
+  <div id="cloud-container" style="height: calc( 100vh - 50px )">
+    Here should render the cloud
+  </div>
+
+</body>

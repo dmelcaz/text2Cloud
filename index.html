@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Tag Cloud</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  <script src="./src/wordcloud2.js"></script>
+  <style src="./src/style.css"></style>
+  
+  <script type="text/javascript">
+    var options = {};
+    var list = [["hamlet",100],["lord",67],["king",46],["will",42],["horatio",39],["claudius",32],["polonius",31],["queen",31],["good",29],["laertes",28],["gertrude",26],["ophelia",24],["rosencrantz",22],["well",22],["'tis",21],["love",20],["hath",20],["guildenstern",19],["enter",19],["speak",19],["thee",19],["clown",16],["marcellus",16],["father",16],["time",15],["exit",15],["heaven",15],["mother",15],["play",14],["exeunt",14],["death",14],["night",14],["hear",14],["soul",14],["mine",14],["dead",13],["ghost",13],["life",13],["osric",13],["bernardo",13],["pray",13],["dear",13],["hold",13],["leave",12],["doth",12],["great",12],["sweet",12],["matter",12],["heart",12],["thing",12],["head",12],["nature",12],["scene",11],["earth",11],["madness",11],["second",11],["denmark",11],["eyes",11],["true",11],["fair",11],["call",11],["poor",11],["till",11],["players",11],["player",11],["fear",11],["blood",11],["follow",11],["hand",11],["friends",10],["keep",10],["fortinbras",10],["reynaldo",10],["father's",10],["there's",10],["body",10],["young",10],["find",10],["noble",10],["long",10],["farewell",10],["is't",10],["youth",10],["hast",10],["england",10],["thoughts",10],["gentleman",10],["tongue",10],["marry",10],["question",10],["majesty",10],["that's",10],["stand",10],["speech",10],["drink",10],["bear",10],["sword",10],["lady",10],["rest",10]];
+
+    function renderCloud(list) {
+      var options = {};
+      var options = {list: list,
+                  fontFamily: 'Arial',
+                  fontWeight: 'bold',
+                  weightFactor: $('#cloud-container').width() / 1280,
+                  gridSize: 10 * $('#cloud-container').width() / 1280,
+                  rotateRatio: 0,
+                  shape: 'circle',
+                  color: '#000',
+                  minSize: 8 * $('#cloud-container').width() / 1280,
+                };
+
+      WordCloud(document.getElementById("cloud-container"), options);
+    }
+
+    $(document).ready( function() {
+      renderCloud(list);  
+    });
+
+    $( window ).resize(function() {
+      renderCloud(list);
+    });
+  </script>
+
+</head>
+<body>
+
+  <div id="cloud-container" style="height: calc( 100vh - 50px )">
+    Here should render the cloud
+  </div>
+
+</body>
